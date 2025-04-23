@@ -1,0 +1,13 @@
+{
+  "Default": {
+    "VersionId": "4hyhnpfnv834evvcphr2csp4cg",
+    "TenantId": "4thdpke4rmk0brk70sz5n9zjw7",
+    "State": "Running"
+  },
+  "NSStronaGlowna": {
+    "VersionId": "412j4chett2ac78dhck1zepw43",
+    "TenantId": "4cp0ce485jnkt68g42xa8nwy4t",
+    "RequestUrlPrefix": "stronaglowna",
+    "State": "Running"
+  }
+}
