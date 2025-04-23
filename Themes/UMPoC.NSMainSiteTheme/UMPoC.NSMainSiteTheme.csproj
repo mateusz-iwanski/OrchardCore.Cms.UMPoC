@@ -18,4 +18,8 @@
     <PackageReference Include="OrchardCore.ResourceManagement" Version="2.1.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Shared\" />
+  </ItemGroup>
+
 </Project>
