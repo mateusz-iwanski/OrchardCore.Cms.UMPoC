@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@RenderTitleSegments(Site.SiteName, "before")</title>
+
+    <!-- Dodanie stylu banera -->
+    <style asp-src="~/UMPoC.NSMainSiteTheme/banner.css"></style>
+
     <resources type="Meta" />
 
     <style asp-name="bootstrap" version="4" at="Head"></style>
@@ -11,11 +15,10 @@
 
     <resources type="HeadLink" />
     <resources type="Stylesheet" />
-    <resources type="HeadScript" />
+    <resources type="HeadScript" />    
+
 </head>
 <body dir="@Orchard.CultureDir()">
-
-    @* @await DisplayAsync(Model.Header) *@
 
     @await RenderSectionAsync("Header", required: false)
 

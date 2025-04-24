@@ -1,0 +1,39 @@
+.masthead {
+    position: relative;
+    width: 100%;
+    height: 400px; /* ustalona wysokoœæ */
+    min-height: 300px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+    .masthead .container {
+        position: relative;
+        z-index: 2;
+    }
+
+.masthead-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.masthead-subheading {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.banner-zone {
+    margin-bottom: 0; /* usuñ potencjalne marginesy */
+}
+
+.masthead {
+    height: 400px !important;
+}

@@ -12,14 +12,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="OrchardCore.ResourceManagement.Abstractions" Version="2.1.7" />
     <PackageReference Include="OrchardCore.Theme.Targets" Version="2.1.6" />
     <PackageReference Include="OrchardCore.ContentManagement" Version="2.1.6" />
     <PackageReference Include="OrchardCore.DisplayManagement" Version="2.1.6" />
-    <PackageReference Include="OrchardCore.ResourceManagement" Version="2.1.6" />
+    <PackageReference Include="OrchardCore.ResourceManagement" Version="2.1.7" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Views\Shared\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="wwwroot\banner.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

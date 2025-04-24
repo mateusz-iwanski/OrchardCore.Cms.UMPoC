@@ -8,6 +8,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Themes", "Themes", "{EADC1550-BBBE-401E-99A2-7E25590500E8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0FDE9D9A-3323-42B1-8889-3E3C87D7F337}"
+	ProjectSection(SolutionItems) = preProject
+		Module.cs = Module.cs
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UMPoC.NSMainSiteTheme", "Themes\UMPoC.NSMainSiteTheme\UMPoC.NSMainSiteTheme.csproj", "{E1C955E9-A3A8-416F-9528-2776F999CE31}"
 EndProject
