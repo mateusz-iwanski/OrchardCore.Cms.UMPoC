@@ -6,7 +6,6 @@
     <title>@RenderTitleSegments(Site.SiteName, "before")</title>
     <resources type="Meta" />
 
-    <!-- INSERT REQUIRED RESOURCES HERE -->
     <style asp-name="bootstrap" version="4" at="Head"></style>
     <script asp-name="bootstrap" version="4" at="Foot"></script>
 
@@ -16,11 +15,14 @@
 </head>
 <body dir="@Orchard.CultureDir()">
 
-    @await RenderBodyAsync()
+    @* @await DisplayAsync(Model.Header) *@
+
+    @await RenderSectionAsync("Header", required: false)
+
+    @await DisplayAsync(Model.Content)
 
     <footer>
-        @* @await RenderSectionAsync("Footer", required: false) *@
-        @await DisplayAsync(Model.Footer) 
+        @await DisplayAsync(Model.Footer)
     </footer>
 
     <resources type="FootScript" />
