@@ -19,7 +19,8 @@
     @await RenderBodyAsync()
 
     <footer>
-        @await RenderSectionAsync("Footer", required: false)
+        @* @await RenderSectionAsync("Footer", required: false) *@
+        @await DisplayAsync(Model.Footer) 
     </footer>
 
     <resources type="FootScript" />
