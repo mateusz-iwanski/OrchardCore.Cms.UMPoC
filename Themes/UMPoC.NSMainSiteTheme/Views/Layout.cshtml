@@ -1,3 +1,5 @@
+@inject OrchardCore.DisplayManagement.IDisplayHelper DisplayHelper
+
 <!DOCTYPE html>
 <html lang="@Orchard.CultureName()">
 <head>
@@ -20,7 +22,17 @@
 </head>
 <body dir="@Orchard.CultureDir()">
 
+    @await DisplayAsync(Model.Breadcrumb)
+
+    @await DisplayAsync(Model.MainBar) <!-- <== Nazwa zone, np. MainBar -->
+
     @await RenderSectionAsync("Header", required: false)
+
+    <nav class="navbar">
+        <div class="container">
+            <menu alias="alias:main-menu" />
+        </div>
+    </nav>
 
     @await DisplayAsync(Model.Content)
 

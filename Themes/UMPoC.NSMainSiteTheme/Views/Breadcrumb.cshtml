@@ -1,0 +1,62 @@
+@inject OrchardCore.ContentManagement.IContentHandleManager ContentHandleManager
+@inject OrchardCore.ContentManagement.IContentManager ContentManager
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@using OrchardCore.ContentManagement
+@using OrchardCore.Menu.Models
+
+@{
+    var contentItemId = await ContentHandleManager.GetContentItemIdAsync("alias:main-menu");
+    var menu = await ContentManager.GetAsync(contentItemId);
+    var currentRelativeUrl = HttpContextAccessor.HttpContext.Request.Path;
+    var breadcrumbItems = new Stack<ContentItem>();
+
+    bool SearchActiveItem(IEnumerable<ContentItem> menuItems)
+    {
+        if (menuItems == null) return false;
+
+        foreach (var item in menuItems)
+        {
+            var linkPart = item.As<LinkMenuItemPart>();
+            if (linkPart == null) continue;
+
+            if (!string.IsNullOrEmpty(linkPart.Url))
+            {
+                var url = linkPart.Url;
+                if (url.StartsWith("~")) url = url.Substring(1);
+
+                if (url.Equals(currentRelativeUrl, StringComparison.OrdinalIgnoreCase))
+                {
+                    breadcrumbItems.Push(item);
+                    return true;
+                }
+                else
+                {
+                    var childItems = item.As<MenuItemsListPart>()?.MenuItems;
+                    if (SearchActiveItem(childItems))
+                    {
+                        breadcrumbItems.Push(item);
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
+    SearchActiveItem(menu.As<MenuItemsListPart>().MenuItems);
+}
+
+<ul class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="@Url.Content("~/")">Home</a>
+    </li>
+    @while (breadcrumbItems.TryPop(out var menuItem))
+    {
+        var linkItem = menuItem.As<LinkMenuItemPart>();
+        <li class="breadcrumb-item">
+            <a href="@Url.Content(linkItem.Url)">@menuItem.DisplayText</a>
+        </li>
+    }
+</ul>
