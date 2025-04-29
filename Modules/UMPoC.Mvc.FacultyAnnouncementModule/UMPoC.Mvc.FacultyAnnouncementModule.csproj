@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+		<PropertyGroup>
+				<TargetFramework>net8.0</TargetFramework>
+				<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+				<Nullable>enable</Nullable>
+				<ImplicitUsings>enable</ImplicitUsings>
+		</PropertyGroup>
+
+		<ItemGroup>
+				<FrameworkReference Include="Microsoft.AspNetCore.App" />
+		</ItemGroup>
+
+		<ItemGroup>
+				<PackageReference Include="OrchardCore.ContentFields" Version="2.1.6" />
+				<PackageReference Include="OrchardCore.ContentManagement" Version="2.1.7" />
+				<PackageReference Include="OrchardCore.ContentManagement.Abstractions" Version="2.1.7" />
+				<PackageReference Include="OrchardCore.Module.Targets" Version="2.1.6" />
+				<PackageReference Include="OrchardCore.Users.Abstractions" Version="2.1.6" />
+		</ItemGroup>
+
+		<ItemGroup>
+				<!-- WAŻNE: kopiowanie Views (cshtml) do output -->
+				<Content Include="Views\**\*.cshtml">
+						<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+				</Content>
+		</ItemGroup>
+
+</Project>

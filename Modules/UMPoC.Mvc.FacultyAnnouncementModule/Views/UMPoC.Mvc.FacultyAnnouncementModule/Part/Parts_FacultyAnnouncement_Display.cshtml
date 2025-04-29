@@ -1,0 +1,10 @@
+@model UMPoC.Mvc.FacultyAnnouncementModule.ViewModels.FacultyAnnouncementPartViewModel
+
+<div class="faculty-announcement-display">
+    <p><strong>Created By:</strong> @Model.CreatedBy</p>
+    <p><strong>Created At:</strong> @Model.CreatedUtc.ToString("g")</p>
+    <p><strong>Modified By:</strong> @Model.ModifiedBy</p>
+    <p><strong>Modified At:</strong> @Model.ModifiedUtc?.ToString("g")</p>
+    <p><strong>Auditing Enabled:</strong> @Model.Audit</p>
+</div>
+ 

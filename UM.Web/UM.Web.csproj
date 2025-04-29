@@ -29,6 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Modules\AuditAnnoucement\AuditAnnoucement.csproj" />
+    <ProjectReference Include="..\Modules\UMPoC.Mvc.FacultyAnnouncementModule\UMPoC.Mvc.FacultyAnnouncementModule.csproj" />
     <ProjectReference Include="..\Themes\UMPoC.NSMainSiteTheme\UMPoC.NSMainSiteTheme.csproj" />
   </ItemGroup>
 
