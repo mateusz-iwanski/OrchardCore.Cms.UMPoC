@@ -1,9 +1,11 @@
+using AuditAnnoucement.Drivers;
 using AuditAnnoucement.Migrations;
 using AuditAnnoucement.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.ContentManagement;
+using OrchardCore.ContentManagement.Display.ContentDisplay;
 using OrchardCore.Data.Migration;
 using OrchardCore.Modules;
 
@@ -13,7 +15,7 @@ namespace AuditAnnoucement
     {
         public override void ConfigureServices(IServiceCollection services)
         {
-            services.AddContentPart<AuditAnnoucementPart>();
+            services.AddContentPart<AuditAnnoucementPart>().UseDisplayDriver<AuditAnnoucementPartDisplayDriver>();
             services.AddScoped<IDataMigration, AuditAnnoucementMigration>();
         }
 

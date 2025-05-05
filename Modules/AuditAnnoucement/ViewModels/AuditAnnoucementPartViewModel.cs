@@ -1,14 +1,16 @@
-﻿using OrchardCore.ContentFields.Fields;
-using OrchardCore.ContentManagement;
+﻿using AuditAnnoucement.Models;
+using OrchardCore.ContentFields.Fields;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AuditAnnoucement.Models
+namespace AuditAnnoucement.ViewModels
 {
-    public class AuditAnnoucementPart : ContentPart
+    // musi być publiczna
+    public class AuditAnnoucementPartViewModel
     {
         public string CreatedBy { get; set; }
 
@@ -19,16 +21,7 @@ namespace AuditAnnoucement.Models
         public DateTime? ModifiedUtc { get; set; }
 
         public TextField Note { get; set; }
-        
-        public ReviewStatus StatusAfterReview { get; set; }
-    }
 
-    public enum ReviewStatus
-    {
-        NotReviewed,
-        InReview,
-        Approved,
-        Published,
-        Rejected
+        public ReviewStatus StatusAfterReview { get; set; }
     }
 }

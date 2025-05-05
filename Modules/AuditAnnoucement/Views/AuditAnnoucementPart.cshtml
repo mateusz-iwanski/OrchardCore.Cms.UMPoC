@@ -1,0 +1,28 @@
+@model AuditAnnoucement.ViewModels.AuditAnnoucementPartViewModel
+
+<div class="audit-announcement-part">
+    <header>
+        <h2>Audit Announcement Details</h2>
+    </header>
+    <section>
+        <p><strong>Created By:</strong> @Model.CreatedBy</p>
+        <p><strong>Created Date:</strong> @Model.CreatedUtc.ToString("f")</p>
+
+        @if (!string.IsNullOrEmpty(Model.ModifiedBy))
+        {
+            <p><strong>Modified By:</strong> @Model.ModifiedBy</p>
+        }
+
+        @if (Model.ModifiedUtc.HasValue)
+        {
+            <p><strong>Modified Date:</strong> @Model.ModifiedUtc.Value.ToString("f")</p>
+        }
+
+        @if (Model.Note != null && !string.IsNullOrEmpty(Model.Note.Text))
+        {
+            <p><strong>Note:</strong> @Model.Note.Text</p>
+        }
+
+        <p><strong>Status After Review:</strong> @Model.StatusAfterReview</p>
+    </section>
+</div>

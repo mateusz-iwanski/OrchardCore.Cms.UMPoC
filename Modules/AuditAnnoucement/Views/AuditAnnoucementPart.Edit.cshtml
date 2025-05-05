@@ -1,0 +1,107 @@
+@model AuditAnnoucement.ViewModels.AuditAnnoucementPartViewModel
+
+@{
+    // Orchard Core automatycznie ustawia HtmlFieldPrefix jako Prefix, np. "AuditAnnoucementPart"
+    // Dziêki temu asp-for wygeneruje poprawne name="AuditAnnoucementPart.X"
+}
+
+<fieldset>
+    <legend>Edit Audit Announcement</legend>
+
+    <!-- Pole tylko do odczytu: CreatedBy -->
+    <div class="form-group">
+        <label asp-for="CreatedBy">Created By</label>
+        <input asp-for="CreatedBy" class="form-control" readonly />
+    </div>
+
+    <!-- Pole tylko do odczytu: CreatedUtc -->
+    <div class="form-group">
+        <label asp-for="CreatedUtc">Created Date</label>
+        <input asp-for="CreatedUtc" type="datetime-local" class="form-control" readonly />
+    </div>
+
+    <!-- Pole tylko do odczytu: ModifiedBy -->
+    <div class="form-group">
+        <label asp-for="ModifiedBy">Modified By</label>
+        <input asp-for="ModifiedBy" class="form-control" readonly />
+    </div>
+
+    <!-- Pole tylko do odczytu: ModifiedUtc -->
+    <div class="form-group">
+        <label asp-for="ModifiedUtc">Modified Date</label>
+        <input asp-for="ModifiedUtc" type="datetime-local" class="form-control" readonly />
+    </div>
+
+    <!-- Pole wyboru: StatusAfterReview -->
+    <div class="form-group">
+        <label asp-for="StatusAfterReview">Status After Review</label>
+        <select asp-for="StatusAfterReview" class="form-control"
+                asp-items="Html.GetEnumSelectList<AuditAnnoucement.Models.ReviewStatus>()">
+        </select>
+    </div>
+
+    <!-- Edytowalne pole: Note.Text zdefiniowane jako TextField w ContentDefinition -->
+    <div class="form-group">
+        <label asp-for="Note.Text">Note</label>
+        <textarea asp-for="Note.Text" class="form-control" rows="4"></textarea>
+        <span class="form-text text-muted">A short note related to the announcement.</span>
+    </div>
+</fieldset>
+
+
+
+
+@* @model AuditAnnoucement.ViewModels.AuditAnnoucementPartViewModel
+
+Jeœli chcemy przez u¿ytkownika mieæ zapisane
+
+<fieldset>
+    <legend>Edit Audit Announcement</legend>
+
+    <form method="post">
+        <div class="form-group">
+            <label for="createdBy">Created By</label>
+            <input id="createdBy" class="form-control" type="text" name="CreatedBy" value="@Model.CreatedBy" required />
+        </div>
+
+        <div class="form-group">
+            <label for="createdUtc">Created Date</label>
+            <input id="createdUtc" class="form-control" type="datetime-local" name="CreatedUtc" value="@Model.CreatedUtc.ToString("yyyy-MM-ddTHH:mm")" required />
+        </div>
+
+        <div class="form-group">
+            <label for="modifiedBy">Modified By</label>
+            <input id="modifiedBy" class="form-control" type="text" name="ModifiedBy" value="@Model.ModifiedBy" />
+        </div>
+
+        <div class="form-group">
+            <label for="modifiedUtc">Modified Date</label>
+            <input id="modifiedUtc" class="form-control" type="datetime-local" name="ModifiedUtc" value="@(Model.ModifiedUtc.HasValue ? Model.ModifiedUtc.Value.ToString("yyyy-MM-ddTHH:mm") : string.Empty)" />
+        </div>
+
+        <div class="form-group">
+            <label for="note">Note</label>
+            <textarea id="note" class="form-control" name="Note.Text">@Model.Note?.Text</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="statusAfterReview">Status After Review</label>
+            <select id="statusAfterReview" class="form-control" name="StatusAfterReview">
+                @foreach (var status in Enum.GetValues(typeof(AuditAnnoucement.Models.ReviewStatus)))
+                {
+                    if (Model.StatusAfterReview == (AuditAnnoucement.Models.ReviewStatus)status)
+                    {
+                        <option value="@status" selected>@status</option>
+                    }
+                    else
+                    {
+                        <option value="@status">@status</option>
+                    }
+                }
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</fieldset>
+ *@
