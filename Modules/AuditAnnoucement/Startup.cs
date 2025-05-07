@@ -1,4 +1,5 @@
 using AuditAnnoucement.Drivers;
+using AuditAnnoucement.Handlers;
 using AuditAnnoucement.Migrations;
 using AuditAnnoucement.Models;
 using Microsoft.AspNetCore.Builder;
@@ -15,8 +16,13 @@ namespace AuditAnnoucement
     {
         public override void ConfigureServices(IServiceCollection services)
         {
-            services.AddContentPart<AuditAnnoucementPart>().UseDisplayDriver<AuditAnnoucementPartDisplayDriver>();
-            services.AddScoped<IDataMigration, AuditAnnoucementMigration>();
+            services
+                .AddContentPart<AuditAnnoucementPart>()
+                .UseDisplayDriver<AuditAnnoucementPartDisplayDriver>()
+                .AddHandler<AuditAnnoucementPartHandler>();
+
+            services
+                .AddScoped<IDataMigration, AuditAnnoucementMigration>();
         }
 
         public override void Configure(IApplicationBuilder builder, IEndpointRouteBuilder routes, IServiceProvider serviceProvider)
